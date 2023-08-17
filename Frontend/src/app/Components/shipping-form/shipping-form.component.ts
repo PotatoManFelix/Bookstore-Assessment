@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ShoppingCartService } from '@app/_services';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
-import { AuthenticationService } from '@app/_services';
 @Component({
   selector: 'app-shipping-form',
   templateUrl: './shipping-form.component.html',
@@ -26,23 +25,35 @@ export class ShippingFormComponent {
     ){}
   get f() { return this.shippingForm.controls; }
   confirmOrder() {
-    const data = JSON.stringify(history.state);
-    const userDataString = localStorage.getItem('user');
-    const user = JSON.stringify(userDataString);
-    const shipping = JSON.stringify([this.f.addressLine1,this.f.addressLine2,this.f.city,this.f.telephone]);
-    this.http.post<any>(
-      `${environment.apiUrl}/order`,
-      { user, data, shipping },
-      { withCredentials: true }
-    ).subscribe(
-      response => {
-        this.apiResponseMessage = response.message;
-        this.showMessage = true;
-        setTimeout(() => {
-          this.showMessage = false;
-        }, 2000);
-      }
-    );
+      const { navigationId, ...cart } = history.state;
+    const userDataObject = localStorage.getItem('user');
+    const shipping = ({
+      'addressLine1': this.f.addressLine1.value,
+      'addressLine2': this.f.addressLine2.value,
+      'city': this.f.city.value,
+      'telephone': this.f.telephone.value
+    });
+    if(userDataObject){
+      const user = JSON.parse(userDataObject);
+      this.http.post<any>(
+        `${environment.apiUrl}/order`,
+        { user, cart, shipping },
+        { withCredentials: true }
+      ).subscribe(
+        response => {
+          this.apiResponseMessage = response.message;
+          localStorage.setItem('cart',response.cart)
+          this.showMessage = true;
+          setTimeout(() => {
+            this.showMessage = false;
+            this.cart.updateLocalStorage();
+            this.router.navigate(['/cart'])
+          }, 2000);
+        }
+      );
+    }else{
+      console.log("User missing from local storage")
+    }
   }
   discardOrder(){
     this.cart.clearCart();

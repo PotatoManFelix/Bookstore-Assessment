@@ -1,6 +1,7 @@
 const User = require('../model/userModel')
 const bcrypt = require('bcryptjs')
 const cartController = require('../controller/cartController')
+const orderController = require('../controller/orderController')
 const postRegister = async (req,res) => {
     try {
         const username = req.body.username 
@@ -49,7 +50,6 @@ const postlogin = async (req,res) => {
             })
         }
         const cartProducts = await cartController.retrieveCart(user);
-
         const responseData = {
             user: {
                 id: user._id,
@@ -59,7 +59,7 @@ const postlogin = async (req,res) => {
             cartProducts: cartProducts,
         };
     
-        req.session.user = responseData.user;
+        // req.session.user = responseData.user;
         res.status(200).json(responseData);
     } catch (error) {
         console.log(error);
@@ -71,22 +71,16 @@ const postlogin = async (req,res) => {
 
 const logOut = async (req,res) => {
     try{
-        console.log("req.parameters:", req.session);
-
-        // if (!req.session.user || !req.session.user.id) {
-        //     console.log("User or user ID not found in session.");
-        //     return res.status(400).send({
-        //         message: "User data not found in session."
-        //     });
-        // }
-        // console.log("User ID from session:", req.session.user.id);
-        // await cartController.saveCart(req.parameters.user.id,req.body.cart);
+        const userId = req.body.user.id
+        await cartController.saveCart(userId,req.body.cart);
+        //TODO: NOT IMPLEMENTED FULLY
         // req.session.destroy((err) => {
         //     if (err) {
         //         console.error('Error destroying session:', err);
         //     }
         //     res.clearCookie('SESS_NAME'); // Clear the session cookie
         // });
+        res.status(200).json({message: 'Successfully Logged Out'})
     }catch(error){
         console.log(error);
         return res.status(500).send({
@@ -116,12 +110,13 @@ const isUserStillLoggedIn = async (req,res) =>{
         });
     }
 }
-
-const assignBooks = async (req,res) => {
+const clearCart = async (req,res) =>{
     try{
-        const books = req.body.books;
-        const user = req.body.user;
-        
+        const userId = req.body.user.id;
+        await cartController.clearCart(userId);
+        res.status(200).send({
+            message: 'Cart Cleared Successfully'
+        }) 
     }catch(error){
         console.error(error);
         res.status(500).send({
@@ -135,4 +130,5 @@ module.exports = {
     postlogin,
     logOut,
     isUserStillLoggedIn,
+    clearCart
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-
+import { take, tap } from 'rxjs';
 
 import { BookCart } from '../_models';
 import { Book } from '../_models';
@@ -14,16 +14,18 @@ export class ShoppingCartService {
   private cartItemsSubject : BehaviorSubject<BookCart[]>;
   constructor(private router: Router, private http: HttpClient) { 
     this.cartItemsSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('cart')!));
-    
+    this.updateLocalStorage();
   }
   get cartItems$(): Observable<BookCart[]> {
     return this.cartItemsSubject.asObservable();
   }
-
   public updateLocalStorage(): void {
-    this.cartItems$.subscribe(books => {
-      localStorage.setItem('cart', JSON.stringify(books));
-    });
+    this.cartItems$.pipe(
+      take(1), // Take only the first emitted value
+      tap(books => {
+        localStorage.setItem('cart', JSON.stringify(books || []));
+      })
+    ).subscribe()
   }
 
   private mapBookToBookCart(book: Book, q : number, format:string): BookCart {
@@ -47,7 +49,7 @@ export class ShoppingCartService {
       console.log("Invalid Book Format")
       return;
     }
-    this.cartItems$.subscribe(
+    this.cartItems$.pipe(take(1)).subscribe(
       books =>{
         if(!books){
           books = [];
@@ -58,12 +60,10 @@ export class ShoppingCartService {
         } else {
           books.push(this.mapBookToBookCart(item, quantity,format));
         }
+        this.updateLocalStorage();
       }
-      
     );
-    this.updateLocalStorage();
-  }
-  
+  }  
   removeItem(itemId: string): void {
     this.cartItems$.subscribe( books => {
       const index = books.findIndex(book => book.id === itemId);
@@ -126,5 +126,21 @@ export class ShoppingCartService {
     return modifiedBooks;
   }
   clearCart(): void {
+    const userData = localStorage.getItem('user');
+    if(userData){
+      const user = JSON.parse(userData);
+    this.http.post<any>(
+      `${environment.apiUrl}/clear-cart`,
+      { user }
+    ).subscribe(
+      response => {
+        if(response && response.message && response.message === "Cart Cleared Successfully"){
+          localStorage.setItem('cart', JSON.stringify([]))
+        }
+      }
+    );
+    }else{
+      console.log("User not existent in local storage")
+    }
   }
 }

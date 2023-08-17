@@ -12,15 +12,16 @@
     <div *ngIf="isLoggedIn()" class="right-section">
         <div class="cart-icon">
             <a [routerLink]="'/cart'"><i class="fa-solid fa-cart-shopping"></i>
-                <div class="badge">{{ cartItemCount }}</div>
+                <div class="badge" *ngIf="(cart.cartItems$ | async)?.length!==0">{{ (cart.cartItems$ | async)?.length }}</div>
             </a>        
         </div>
+        <a [routerLink]="'/user'">
         <div class="user-container">
             <div class="user-icon">
                 <span class="circle">{{ getUsernameFirstLetter() }}</span>
             </div>
-            <a [routerLink]="'/user'" class="username">{{ user?.username }}</a>
-        </div>
+            <span class="username">{{ user?.username }}</span>
+        </div></a>
     </div>
     <button *ngIf="!isLoggedIn()">Login</button>
 </div> 

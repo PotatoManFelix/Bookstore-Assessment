@@ -91,6 +91,7 @@ export class BookFetchingService {
     
     return storedBooks.find(book => book.name === name);
   }
+  //BACKEND BASED BOOK SEARCH FUNCTIONS (INACTIVE)
   searchBookByNameObservable(name: string, language: string, format: string): Observable<Book[]> {
     return new Observable<Book[]>(observer => {
       const storedBooks = this.bookSubject.value;
@@ -113,8 +114,6 @@ export class BookFetchingService {
       observer.complete();
     });
   }
-  
-  
   searchBookByAuthorObservable(author: string, language:string, format: string): Observable<Book[]> {
     return new Observable<Book[]>(observer => {
       const storedBooks = this.bookSubject.value;

@@ -18,6 +18,7 @@ export class LoginComponent{
   });
   loading = false;
   error = '';
+  successMessage : string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -43,16 +44,19 @@ export class LoginComponent{
       .pipe(first())
       .subscribe({
           next: () => {
+            this.successMessage = 'Logged in successfully, redirecting you';
+            setTimeout(() => {
+              this.successMessage = '';
               // get return url from route parameters or default to '/'
-              console.log("wtf")
               const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
               this.router.navigate([returnUrl]);
+            }, 2000);
           },
           error: error => {
             if (error && error.error && error.error.message) {
               this.error = error.error.message;
           } else {
-              this.error = 'An error occurred during registration.';
+              this.error = 'An error occurred during login.';
           }
           }
       });

@@ -62,14 +62,14 @@ export class BookDetailsComponent implements OnInit {
   toggleDropdown() {
     if (this.multipleFormats) {
       this.dropdownOpen = !this.dropdownOpen;
-   }
+    }
   }
   toggleDropdownOutsideClick(event : any) {
     if (this.multipleFormats) {
       event.stopPropagation();
       this.dropdownOpen = !this.dropdownOpen;
       console.log("REEEE")
-   }
+    }
   }
   selectFormat(format : string){
     this.bookFormat = format

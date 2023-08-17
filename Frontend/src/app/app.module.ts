@@ -23,7 +23,6 @@ import { SearchComponent } from './Components/search/search.component';
 import { BookDisplayComponent } from './Components/book-display/book-display.component';
 import { BookDetailsComponent } from './Components/book-details/book-details.component';
 import { ShoppingCartComponent } from './Components/shopping-cart/shopping-cart.component';
-import { LogoutButtonComponent } from './Components/_logout-button/logout-button.component';
 import { UserComponent } from './Components/user/user.component';
 import { ShippingFormComponent } from './Components/shipping-form/shipping-form.component';
 
@@ -40,7 +39,6 @@ import { ShippingFormComponent } from './Components/shipping-form/shipping-form.
     BookDisplayComponent,
     BookDetailsComponent,
     ShoppingCartComponent,
-    LogoutButtonComponent,
     UserComponent,
     ShippingFormComponent,
   ],

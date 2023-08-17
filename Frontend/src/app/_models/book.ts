@@ -18,3 +18,11 @@ export interface BookCart{
     quantity: number;
     selected: boolean;
 }
+export interface BookCartNoSelection{
+    id : string;
+    name: string;
+    image: string;
+    author: string;
+    price : number;
+    quantity: number;
+}

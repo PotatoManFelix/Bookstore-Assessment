@@ -1,11 +1,11 @@
 ﻿import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { BookCart, User } from '../_models';
+import { BookCart, BookCartNoSelection, User } from '../_models';
 import { ShoppingCartService } from './shopping-cart.service';
 
 @Injectable({ providedIn: 'root' })
@@ -20,8 +20,6 @@ export class AuthenticationService {
     ) {
       this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
       this.user = this.userSubject.asObservable();
-      
-      // Initialize user data from cookies when the service is created
     }
   
     public get userValue() {
@@ -34,9 +32,8 @@ export class AuthenticationService {
         { username, email, password },
         { withCredentials: true }
       ).pipe(
-        map(user => {
-          this.userSubject.next(user);
-          return user;
+        map(response => {
+          return response.message;
         })
       );
     }
@@ -48,20 +45,23 @@ export class AuthenticationService {
         { withCredentials: true }
       ).pipe(
         map(response => {
-            console.log(response);
             const user = response.user;
-            const cart = response.cartProducts;
-            localStorage.setItem('cart', JSON.stringify(cart));
+            const books : BookCartNoSelection[]  = response.cartProducts;
+            const booksWithSelected : BookCart[] = books.map(book => ({
+              ...book,
+              selected: false,
+            }));
+            const cart = JSON.stringify(booksWithSelected)
+            localStorage.setItem('cart', cart);
             localStorage.setItem('user', JSON.stringify(user));
             this.userSubject.next(user);
-            this.cart.updateLocalStorage();
           })
         );
     }
     checkUserLoggedIn(){
       return this.http.post<boolean>(`${environment.apiUrl}/check-session`, { withCredentials: true });
     }
-    logout(){
+    logout(): void{
       const cartDataString = localStorage.getItem('cart');
       const userDataString = localStorage.getItem('user');
       if (cartDataString !== null && userDataString !==null) {
@@ -74,13 +74,14 @@ export class AuthenticationService {
         this.http.post(
           `${environment.apiUrl}/logout`, {user, cart},
           { withCredentials: true }
-        ).subscribe(() => {
+        ).subscribe(response => {
           // Clear local storage
           localStorage.removeItem('cart');
           localStorage.removeItem('user');
+          localStorage.removeItem('books')
           // Clear the user subject and navigate to the login page after updating the cart
-          // this.userSubject.next(null);
-          // this.router.navigate(['/login']);
+          this.userSubject.next(null);
+          this.router.navigate(['/login']);
         });
       }else{
         console.log('error in local storage')

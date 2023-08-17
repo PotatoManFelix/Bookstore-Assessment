@@ -1,15 +1,35 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ShoppingCartService } from '@app/_services';
+import { AuthenticationService } from '@app/_services';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  userName: string = 'John'; // Replace with the user's name
-  cartItemsCount: number = 5; // Replace with the actual cart item count
-  orders: string[] = ['Order #123', 'Order #456', 'Order #789']; // Replace with actual order data
-  ngOnInit(){
-    
+  userName: string = '';
+  constructor(
+    protected cart : ShoppingCartService,
+    private authService : AuthenticationService,
+    private router: Router
+    ){
+
+  }
+  ngOnInit() {
+    this.retrieveUserData();
+  }
+
+  private retrieveUserData() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      this.userName = user.username; // Update the username
+    }
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
 }

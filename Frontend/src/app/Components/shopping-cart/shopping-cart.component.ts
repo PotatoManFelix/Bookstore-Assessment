@@ -94,7 +94,4 @@ export class ShoppingCartComponent implements OnInit {
       return false;
     }
   }
-  closeOverlay(){
-    this.showOverlay = false;
-  }
 }

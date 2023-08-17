@@ -19,6 +19,7 @@ export class RegisterComponent {
   });
   error: string | null = null;
   loading = false;
+  successMessage : string | null = null;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -26,30 +27,29 @@ export class RegisterComponent {
     private route: ActivatedRoute,
   ) { }
   get f() { return this.registerForm.controls; }
-    //TODO: ADAPT
   register() {
     this.submitted = true;
-
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
     this.loading = true;
     this.authenticationService.register(this.f.username.value, this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe({
-          next: () => {
-              // get return url from route parameters or default to '/'
-              const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-              this.router.navigate([returnUrl]);
-          },
-          error: error => {
-            if (error && error.error && error.error.message) {
-              this.error = error.error.message;
-          } else {
-              this.error = 'An error occurred during registration.';
-          }
-          }
-      });
+    .pipe(first())
+    .subscribe({
+      next: (message) => {
+        this.successMessage = message.concat(' Redirecting you to login');
+        setTimeout(() => {
+          this.successMessage = '';
+          this.router.navigate(['/login']);
+        }, 2000);
+      },
+      error: error => {
+        if (error && error.error && error.error.message) {
+          this.error = error.error.message;
+        } else {
+          this.error = 'An error occurred during registration.';
+        }
+      }
+    });
   }
 }
