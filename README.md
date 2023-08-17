@@ -14,7 +14,7 @@ This is an Assessment Project that was assigned to me during an internship inter
    ```shell
    apiUrl: 'http://localhost:PORT/api'
    ```
-4. Import the data from the provided email.
+4. Import the data from the provided email into the MongoDB server.
 
 ### Packages
 1. Requires Node Package Manager (NPM).
