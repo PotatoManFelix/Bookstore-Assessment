@@ -1,0 +1,5 @@
+//use if you want to use `ng serve` to create the frontend
+export const environment = {
+    production: false,
+    apiUrl: '.../api'
+};

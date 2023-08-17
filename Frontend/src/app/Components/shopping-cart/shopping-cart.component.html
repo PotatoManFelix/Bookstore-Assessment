@@ -1,0 +1,30 @@
+<h1>Your Cart ({{cartItems.length}} Items)</h1>
+<div *ngIf="(cartItems); else emptyCart" class="main-container">
+  <div class="shopping-cart">
+    <div class="cart-items">
+      <div *ngFor="let item of cartItems" class="cart-item" [ngStyle]="getItemStyles(item)">
+        <input type="checkbox"class="checkbox" [checked]="item.selected" (click)="updateSelection(item.id)">
+        <img [src]="item.image" alt="Book Image" class="item-image">
+        <div class="item-details">
+          <h3>{{ item.name }} ({{getFormatFromId(item.id)}})</h3>
+          <p>By {{ item.author }}</p>
+          <p>Price: ${{ item.price * item.quantity | number:'1.2-2' }}</p>
+          <div class="quantity-controls">
+            <button (click)="decreaseQuantity(item)" [disabled]="item.quantity === 1"><i class="fa-solid fa-minus"></i></button>
+            <span class="quantity">{{ item.quantity }}</span>
+            <button (click)="increaseQuantity(item.id)"><i class="fa-solid fa-plus"></i></button>
+          </div>
+          <button class="delete-button" (click)="removeItem(item.id)"><i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="side">
+    <p>Total price: ${{calculateTotal()}}</p>
+    <button (click)="proceedToCheckout()" [disabled]="noneSelected() === true">Proceed To Checkout</button>
+  </div>
+</div>
+<ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+</ng-template>

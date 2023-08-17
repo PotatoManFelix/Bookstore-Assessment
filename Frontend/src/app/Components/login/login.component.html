@@ -1,0 +1,27 @@
+<div class="prompt-overlay">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="custom-form-field">
+      <input type="email" placeholder="Email" formControlName="email">
+      <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+        Email is required
+      </div>
+      <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')">
+        Email must be a valid Email
+      </div>
+    </div>
+    <div class="custom-form-field">
+      <input type="password" placeholder="Password" formControlName="password">
+      <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+        Password is required
+      </div>
+    </div>
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+    <div class="button">
+      <!-- Button is disabled(not clickable) if the LoginForm contains Validation Errors -->
+      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+    </div>
+    <h1>Don't have an account? <a routerLink="/register">Sign Up Now</a></h1>
+  </form>
+</div>

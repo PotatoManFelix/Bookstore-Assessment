@@ -1,0 +1,38 @@
+<div *ngIf="books">
+  <div class="side-container">
+    <img [src]="book?.image">
+  </div>
+  <div class="main-container">
+    <p class="title">{{book?.name}}</p>
+    <p class="sub-title">{{book?.author}}  •  {{book?.year}} Year</p>
+    <div class="custom-dropdown">
+        <button class="custom-dropdown-toggle" (click)="toggleDropdown()" [ngClass]="{ 'active': multipleFormats }">
+          <span class="format-icon"><i [ngClass]="getFormatIcon(bookFormat)"></i>{{ bookFormat }}</span> <span class="dropdown-icon"><i *ngIf= "multipleFormats" class="fa-solid fa-sort-down"></i></span>
+        </button>
+          <div class="custom-dropdown-menu" [ngClass]="{ 'open': multipleFormats && dropdownOpen }">
+            <a class="custom-dropdown-item" *ngFor="let format of bookFormats" (click)="selectFormat(format)">
+              <span class="format-icon"><i [ngClass]="getFormatIcon(format)"></i></span>
+              {{ format }}
+            </a>
+          </div>
+          <div *ngIf="multipleFormats && dropdownOpen" (clickOutside)="toggleDropdownOutsideClick($event)">
+            <!-- This div wraps the custom-dropdown and handles the clickOutside event -->
+          </div>
+    </div>
+    <p class="price">${{book?.price}}</p>
+    <div class="quantity-controls">
+      <div class="controls">
+        <button (click)="decreaseQuantity()" [disabled]="quantity === 1"><i class="fa-solid fa-minus"></i></button>
+        <span class="quantity">{{ quantity }}</span>
+        <button (click)="increaseQuantity()"><i class="fa-solid fa-plus"></i></button> 
+      </div>
+      <button class="cart-button" (click)="addToCart()"><i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>
+    </div>
+    <p><span class="annotation">Annotation:</span></p>
+    <p><span class="sub-title">{{book?.description}}</span></p>
+  </div>
+</div>
+<div *ngIf="!books">
+  <p>Loading...</p>
+</div>
+

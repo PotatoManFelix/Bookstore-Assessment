@@ -1,0 +1,178 @@
+.main-container {
+  width: 100%;
+  display: flex;
+}
+h1{
+  margin-left: calc(5%);
+  font-size: 30px;
+  clear: both;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.shopping-cart {
+  max-width: calc(50%);
+  padding: 20px;
+  flex: 1; /* Allow the shopping cart to flex */
+  margin-right: calc(10%); /* Add margin for spacing */
+  margin-left: 50px;
+  margin-top: 20px;
+}
+
+.cart-items {
+  margin-top: 10px;
+}
+
+.cart-item {
+  display: flex;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  position: relative;
+}
+
+.item-image{
+  margin-left: 10px;
+}
+.checkbox {
+  position: absolute;
+  top: 5px;
+  right: 20px;
+  appearance: none;
+  cursor: pointer;
+  z-index: 1; /* Ensure the checkbox is clickable */
+  /* Style the custom checkbox */
+  width: 20px;
+  height: 20px;
+}
+
+.cart-item:hover .checkbox::before {
+  display: inline-block;
+  text-rendering: auto;
+  font: var(--fa-font-regular);
+  content: '\f111'; /* Unicode of Font Awesome circle icon */
+  font-weight: 900;
+  font-size: 20px;
+  color: white;
+  background-color: #CF563D;
+  border-radius: 50%;
+  padding: 2px;
+  position: absolute;
+  text-align: center;
+}
+
+.checkbox:checked::before,
+.cart-item:hover .checkbox:checked::before{
+  color: white;
+  background-color: #CF563D;
+  font: var(--fa-font-solid);
+  content: '\f058'; /* Unicode of Font Awesome circle check icon */
+  display: inline-block;
+  position: absolute;
+  font-weight: 900;
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.item-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.delete-button {
+  background-color: #CF563D;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 15px;
+  right: 20px; /* Adjusted right value */
+  border-radius: 20px;
+}
+
+.delete-button:hover {
+  background-color: #d22f00;
+}
+
+.quantity-controls {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  bottom: 50px;
+  right: 20px; /* Adjusted right value */
+}
+
+.quantity-controls button {
+  background-color: #F4F4F4;
+  color: black;
+  border: none;
+  width: 24px;
+  height: 24px;
+  line-height: 1;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.quantity-controls button:disabled {
+  cursor: default;
+}
+.quantity-controls button:hover:disabled {
+  background-color: #F4F4F4;
+  color: black;
+}
+
+.quantity-controls button:hover {
+  background-color: black;
+  color: white;
+}
+
+.quantity {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.side {
+  max-width: calc(30%);
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow the side container to flex */
+  flex-direction: row;
+  height:fit-content;
+  margin-right: 20px;
+  margin-top: 50px;
+  
+  justify-content: center;
+}
+.side p{
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.side button{
+  width: calc(90%);
+  margin-left: calc(5%);
+  background-color: #CF563D;
+  color:white;
+  border-radius: 50px;
+  border: 0px;
+  padding: 10px 0px;
+  justify-self: center;
+  cursor: pointer;
+}
+.side button:disabled{
+  opacity: 25%;
+  cursor: pointer;
+}
+.side button:hover{
+  background-color: #d22f00;
+}

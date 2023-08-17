@@ -1,0 +1,140 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Aligns content to the start and end of the line */
+    margin-bottom: 20px;
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    border: 1px solid #D3D3D3;
+    border-radius: 50px;
+    overflow: hidden;
+    flex-grow: 1; /* Allow this element to expand to fill available space */
+  }
+  .search-input-wrapper input::placeholder{
+    color: #D3D3D3;
+    font-weight: 500px;
+  }
+  .search-input-wrapper.active {
+    border: 2px solid #CF563D;
+  }
+  
+  .search-input {
+    width: 98%; /* Input takes up available space within the input wrapper */
+    padding: 20px;
+    border: none;
+    outline: none;
+  }
+  
+  .toggle-button{
+    font-size: 12px;
+    margin-right: 10px;
+    padding: 6px 20px;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 20px;
+    color: black;
+    transition: background-color 0.3s;
+    transition: color 0.3s;
+    user-select: none;
+  }
+  .toggle-button.active{
+    background-color: black;
+    color: white;
+  }
+  .toggle-button:hover {
+    background-color: #CF563D;
+    opacity: 80%;
+    color:white;
+  }
+  .toggle-button::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 5px; /* Adjust the width according to your margin */
+    height: 1px;
+    background-color: #fff; /* Start color for animation */
+    transition: width 0.3s, background-color 0.3s; /* Add transition properties */
+  }
+  .search-button {
+    background-color: #000000;
+    color: white;
+    border: none;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 100px;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 20px;
+    flex-shrink: 0; /* Prevents the search button from shrinking */
+  }
+  .search-preferences {
+    display: flex;
+    align-items: center;
+  }
+  
+  .custom-dropdown {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .custom-dropdown-toggle {
+    background-color: #F4F4F3;
+    color: black;
+    font-weight: 500px;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 10px;
+    cursor: pointer;
+    position: relative;
+    width: 160px;
+    text-align: left;
+    text-indent: 15px;
+  }
+
+  
+  .custom-dropdown-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 160px;
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    display: none;
+  }
+  
+  .custom-dropdown-menu.open {
+    display: block;
+  }
+  
+  .custom-dropdown-item {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+    color:#919194;
+    font-weight: 500;
+  }
+  .custom-dropdown-item.active {
+    background-color: rgba(207, 86, 61, 0.25);
+    color:black;
+  }
+
+  .dropdown-icon {
+    justify-self: flex-end;
+    position:relative;
+    right: -40px; /* Adjust this value to position the icon */
+    color: #000000;
+  }
+  
+  .dropdown-icon.open {
+    display: block;
+  }

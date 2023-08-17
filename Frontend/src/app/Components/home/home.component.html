@@ -1,0 +1,7 @@
+<div class="container">
+    <h1>Online Book's Store</h1>
+    <app-search (searchResultsEmitter)="receiveSearchResults($event)"></app-search>
+    <app-book-display [searchResults]="receivedSearchResults"></app-book-display>
+</div>
+
+

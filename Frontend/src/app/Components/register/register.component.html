@@ -1,0 +1,35 @@
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="custom-form-field">
+      <input type="username" placeholder="Username" formControlName="username">
+      <div class="error" *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.hasError('required')">
+        Username is required
+      </div>
+    </div>
+    <div class="custom-form-field">
+      <input type="email" placeholder="Email" formControlName="email">
+      <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')">
+        Email is required
+      </div>
+      <div class="error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')">
+        Email must be a valid Email
+      </div>
+    </div>
+    <div class="custom-form-field">
+      <input type="password" placeholder="Password" formControlName="password">
+      <div class="error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')">
+        Password is required
+      </div>
+      <div *ngIf="error" class="error">
+        {{ error }}
+      </div>
+    
+    </div>
+
+    <div class="button">
+      <!-- Button is disabled(not clickable) if the LoginForm contains Validation Errors -->
+      <button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+    </div>
+    <h1>Already have an account? <a routerLink="/login">Sign In</a></h1>
+  </form>
+</div>

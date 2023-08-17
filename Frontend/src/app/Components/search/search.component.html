@@ -1,0 +1,30 @@
+<div class="search-container">
+    <div class="search-input-wrapper" [ngClass]="{ active: isSearchInputFocused }">
+      <input type="text" class="search-input" placeholder="Search" (focus)="onSearchInputFocus()" (blur)="onSearchInputBlur()" (keydown.enter)="performSearch()">
+      <div class="toggle-button" [ngClass]="{ active: filterBy === 'Title' }" (click)="setFilter('Title')">Title</div>
+      <div class="toggle-button" [ngClass]="{ active: filterBy === 'Author' }" (click)="setFilter('Author')">Author</div>
+    </div>
+    <button class="search-button" (click)="performSearch()"><i class="fas fa-search"></i></button>
+</div>
+<div class="search-preferences">
+    <div class="custom-dropdown">
+      <button class="custom-dropdown-toggle" (click)="toggleDropdown('format')">
+        Format <span class="dropdown-icon"><i class="fa-solid fa-caret-down"></i></span>
+      </button>
+      <div class="custom-dropdown-menu" [ngClass]="{ 'open': dropdownOpen === 'format' }">
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedFormat === '' }" (click)="selectFormat('')">All</a>
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedFormat === 'E-Book' }" (click)="selectFormat('E-Book')">E-Book</a>
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedFormat === 'Paper-Book' }" (click)="selectFormat('Paper')">Paper-Book</a>
+      </div>
+    </div>
+    <div class="custom-dropdown">
+      <button class="custom-dropdown-toggle" (click)="toggleDropdown('language')">
+        Language<span class="dropdown-icon"><i class="fa-solid fa-caret-down"></i></span>
+      </button>
+      <div class="custom-dropdown-menu" [ngClass]="{ 'open': dropdownOpen === 'language' }">
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedLanguage === '' }" (click)="selectLanguage('')">All</a>
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedLanguage === 'en' }" (click)="selectLanguage('en')">English</a>
+        <a class="custom-dropdown-item" [ngClass]="{ 'active': selectedLanguage === 'ar' }" (click)="selectLanguage('ar')">Arabic</a>
+      </div>
+    </div>
+</div>

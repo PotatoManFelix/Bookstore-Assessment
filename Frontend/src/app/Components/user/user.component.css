@@ -1,0 +1,16 @@
+.user-welcome {
+    margin-bottom: 20px;
+  }
+  
+  .user-cart {
+    margin-bottom: 20px;
+  }
+  
+  .user-orders ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .user-orders li {
+    margin-bottom: 5px;
+  }

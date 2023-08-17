@@ -1,0 +1,5 @@
+//use if you want to use `ng build` to create the frontend
+export const environment = {
+    production: true,
+    apiUrl: '.../api'
+};

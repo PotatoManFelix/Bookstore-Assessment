@@ -1,0 +1,26 @@
+<div class="topnav">
+    <div class="left-section">
+        <a [routerLink]="'/home'"><div class="logo">
+            <img src="../../assets/Logo.png" alt="Logo">
+        </div></a>
+        <a>Resources</a>
+        <a>For Reader</a>
+        <a>Publishing House</a>
+        <a>For Researcher</a>
+        <a>Contacts</a>    
+    </div>
+    <div *ngIf="isLoggedIn()" class="right-section">
+        <div class="cart-icon">
+            <a [routerLink]="'/cart'"><i class="fa-solid fa-cart-shopping"></i>
+                <div class="badge">{{ cartItemCount }}</div>
+            </a>        
+        </div>
+        <div class="user-container">
+            <div class="user-icon">
+                <span class="circle">{{ getUsernameFirstLetter() }}</span>
+            </div>
+            <a [routerLink]="'/user'" class="username">{{ user?.username }}</a>
+        </div>
+    </div>
+    <button *ngIf="!isLoggedIn()">Login</button>
+</div> 

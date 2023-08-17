@@ -1,0 +1,45 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .book-card {
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    width: calc(25% - 20px); /* Four cards per row with 20px gap */
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .book-image-container:hover {
+    background-color:#CF563D; /* Orange highlight on hover */
+  }
+  
+  .book-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 520px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .book-image {
+    width:200px;
+    height: auto;
+  }
+  
+  .book-name {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .book-details {
+    margin: 5px 0;
+  }
+  a{
+    color: inherit;
+    text-decoration: inherit;
+  }

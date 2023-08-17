@@ -1,0 +1,12 @@
+<div class="book-list">
+  <div class="book-card" *ngFor="let book of searchResults">
+    <a [routerLink]="'/book/' + book.id">
+    <div class="book-image-container">
+      <img [src]="book.image" alt="Book Cover" class="book-image">
+    </div>
+    <h3 class="book-name">{{ book.name }}</h3>
+    <p class="book-details">{{ book.author }}</p>
+    <p class="book-details">{{ book.year }} Year</p>
+    </a>
+  </div>
+</div>

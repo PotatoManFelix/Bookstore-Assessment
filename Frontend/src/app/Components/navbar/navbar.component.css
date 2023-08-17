@@ -1,0 +1,131 @@
+a{
+  text-decoration: none;
+}
+.topnav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.topnav .left-section {
+  margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    overflow: hidden;
+    height: auto;
+    justify-content: space-between;
+    z-index: 2;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav .left-section a {
+    margin-left: 45px;
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 20px 5px;
+    font-size: 16px;
+  }
+
+  .topnav  button{
+    justify-self: flex-end;
+    margin-top: -8px;
+    border-radius: 40px;
+    background-color: #CF563D;
+    padding: 10px;
+    width: 100px;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    height:auto;
+    margin-right: 50px;
+    border: 1px solid ;
+  }
+
+  .logo {
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    user-select: none; /* Disable text selection */
+    pointer-events: none; /* Disable pointer events on the image */
+    width: 30px; /* Adjust the width as needed */
+    height: auto; /* Keep aspect ratio */
+    /* You can add additional styles like margin, border, etc. */
+  }
+  .right-section {
+    display: flex; /* Added */
+    align-items: center; /* Added */
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-right: calc(5%);
+  }
+  
+  .right-section i {
+    font-size: 20px;
+    font-weight: 900; /* Corrected */
+    margin-right: 10px;
+    color: black;
+  }
+  .cart-icon {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .right-section .user-container {
+    display: flex; /* Added */
+    align-items: center; /* Added */
+    text-decoration: none;
+    color: black;
+    border: 1px solid #f4f4f3;
+    border-radius: 50px;
+    margin-left: 10px; 
+    padding: 2px 10px;/* Added */
+  }
+  
+  .user-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: #cf563d;
+    font-size: 20px;
+  }
+  
+  .circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 14px; /* Adjusted */
+    color: #fff;
+    text-align: center;
+    background: #cf563d;
+    display: flex; /* Added */
+    align-items: center; /* Added */
+    justify-content: center; /* Added */
+  }
+  .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background-color: #CF563D;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+  }
+  
+  .username {
+    color: black; /* Added */
+    margin-left: 8px; /* Adjusted */
+  }
+  
+  

@@ -1,0 +1,79 @@
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    font-weight: bold;
+    text-indent: 25px;
+}
+input {
+    width: 50%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: 20px;
+}
+input:focus {
+    outline: 2px solid #CF563D;
+}
+button {
+    border-radius: 10px;
+    background-color: #CF563D;
+    padding: 10px;
+    width: 20%;
+    color: white;
+    margin-bottom: 10px;
+    margin-right: 100px;
+    border: none;
+}
+.discard{
+    position: relative;
+    left: calc(25%);
+    top: -46px;
+}
+.discard button {
+    background-color: black;
+}
+.error{
+    width: 100%;
+    color: #CF563D;
+    text-align: left;
+    text-indent: 18px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.popup-message {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    display: none;
+    animation: slide-down 0.5s ease-in-out;
+}
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.hide-popup {
+    animation: slide-up 0.5s ease-in-out;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}

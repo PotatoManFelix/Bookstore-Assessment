@@ -1,0 +1,14 @@
+<div class="user-welcome">
+    <h2>Welcome, {{ userName }}!</h2>
+</div>
+<div class="user-cart">
+    <p>You have {{ cartItemsCount }} items in your shopping cart.</p>
+</div>
+<div class="user-orders">
+    <h3>Your Orders:</h3>
+    <ul>
+      <li *ngFor="let order of orders">{{ order }}</li>
+    </ul>
+</div>
+
+<app-logout-button></app-logout-button>

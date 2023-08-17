@@ -1,0 +1,15 @@
+<!-- Your common header here -->
+
+
+<!-- The router-outlet will display the appropriate component based on the route -->
+<div *ngIf="!loggedIn" class="container">
+    <app-layout-header *ngIf="!loggedIn"></app-layout-header>
+    <router-outlet></router-outlet>
+</div>
+<div *ngIf="!loggedIn" class="img-1">
+    <img *ngIf="!loggedIn" src="../../../assets/Illustration 1.png">
+</div>
+<div *ngIf="!loggedIn" class="img-2">
+    <img *ngIf="!loggedIn" src="../../../assets/Illustration 2.png">
+</div>
+<router-outlet *ngIf="loggedIn"></router-outlet>
