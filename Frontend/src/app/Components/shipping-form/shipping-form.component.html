@@ -1,4 +1,4 @@
-<div class="popup-message" *ngIf="showMessage">{{ apiResponseMessage }}</div>
+<span class="popup-message" *ngIf="showMessage">{{ apiResponseMessage }}</span>
 <form [formGroup]="shippingForm"(ngSubmit)="confirmOrder()">
     <div class="form-group">
         <label for="addressLine1">Address Line 1:</label>

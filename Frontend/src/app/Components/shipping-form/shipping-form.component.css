@@ -25,6 +25,7 @@ button {
     margin-bottom: 10px;
     margin-right: 100px;
     border: none;
+    cursor: pointer;
 }
 .discard{
     position: relative;
@@ -33,6 +34,7 @@ button {
 }
 .discard button {
     background-color: black;
+    cursor: pointer;
 }
 .error{
     width: 100%;
@@ -45,35 +47,23 @@ button {
 
 .popup-message {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
+    bottom: calc(50%);
+    right: 200px;
+    width: 150px;
+    height: auto;
     background-color: black;
     color: white;
     padding: 10px;
+    border-radius: 50px;
     font-size: 16px;
     text-align: center;
-    display: none;
-    animation: slide-down 0.5s ease-in-out;
+    animation: slide-right 0.5s ease-in-out;
 }
-@keyframes slide-down {
+@keyframes slide-right {
     from {
-        transform: translateY(-100%);
+        transform: translateX(100%);
     }
     to {
-        transform: translateY(0);
-    }
-}
-
-.hide-popup {
-    animation: slide-up 0.5s ease-in-out;
-}
-
-@keyframes slide-up {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(-100%);
+        transform: translateX(0);
     }
 }

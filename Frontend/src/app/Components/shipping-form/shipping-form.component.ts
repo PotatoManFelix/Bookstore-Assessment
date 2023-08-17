@@ -46,7 +46,7 @@ export class ShippingFormComponent {
   }
   discardOrder(){
     this.cart.clearCart();
-    this.apiResponseMessage = 'Order Discarded';
+    this.apiResponseMessage = 'Order Discarded Successfully';
     this.showMessage = true;
     setTimeout(() => {
       this.showMessage = false;
