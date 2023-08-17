@@ -32,7 +32,6 @@ form {
   margin-bottom: 5px;
 }
 
-/* Adjust the CSS for the error messages */
 .error {
   width: 100%;
   color: #CF563D;
@@ -42,14 +41,12 @@ form {
   margin-bottom: 10px;
 }
 
-/* Adjust the CSS for the submit button */
 .button {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-/* Add some spacing to the link "Go to Register" */
 h1 {
   font-size: 14px;
   text-align: center;
@@ -93,33 +90,38 @@ input:focus{
   outline: 2px solid #CF563D;
 }
 .img-1{
-  position: relative;
-  height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
   width: 100vw;
-  overflow: hidden;
+  height: 100vh;
 }
 .img-1 img{
-  user-select: none; /* Disable text selection */
-  pointer-events: none; /* Disable pointer events on the image */
+  user-select: none;
+  pointer-events: none;
   height: 100%;
   width: auto;
   position: absolute;
   bottom: -80px;
   left: -150px;
 }
-.img-2{
-  position: relative;
-  width: 700px;
-  height: auto;
-  overflow: hidden;
+.img-2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
 }
-.img-2 img{
-  user-select: none; /* Disable text selection */
-  pointer-events: none; /* Disable pointer events on the image */
+
+.img-2 img {
   max-height: 100%;
-  min-height: 80%;
-  width: auto;
-  position: absolute;
-  top: 30px;
-  right: 0px;
+  max-width: 100%;
+  user-select: none;
+  pointer-events: none;
 }

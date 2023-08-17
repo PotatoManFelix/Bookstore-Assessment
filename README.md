@@ -5,7 +5,7 @@ This is an Assessment Project that was assigned to me during an internship inter
 
 ### Environmental Variables
 1. Create a `.env` file in the `Backend` folder, following the format provided in [env_example.txt](Backend/env_example.txt).
-2. Create a `environment.prod.ts` file in the [Frontend Evironments Folder](Frontend/src/environments), following the format provided in [environment.prod.ts_example.txt](Frontend/src/environments/environment.prod.ts_example.txt)
+2. Create a `environment.ts` file in the [Frontend Evironments Folder](Frontend/src/environments), following the format provided in [environment.ts_example.txt](Frontend/src/environments/environment.ts_example.txt)
 
 ### Database
 1. Create a MongoDB server.
@@ -38,7 +38,7 @@ This is an Assessment Project that was assigned to me during an internship inter
    ```
 2. In the second terminal (Frontend), run the following command:
    ```shell
-   ng build
+   ng serve
    ```
 
 ## Version
