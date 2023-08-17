@@ -1,7 +1,6 @@
 # Bookstore-Assessment
 
-This is an Assessment Project that was assigned to me during an internship interview.
-
+This is an Assessment Project that was assigned to me during an internship interview. Note that this project has a lot of areas for improvements both in code structure and website design, I took this project as an apportunity to get familiar with Angular's capabilities and sat out to do it using exclusively the Angular router to eliminate page refreshes. I am aware of the lack of both confirmation popup messages in the UX design and strict code functionality-based structure.
 ## Set Up
 
 ### Environmental Variables
@@ -43,6 +42,6 @@ This is an Assessment Project that was assigned to me during an internship inter
    ```
 
 ## Version
-Please note that this project was developed using the following versions:
+Please note that this project was developed using the following versions, and hasn't been tested for compatibility with any other versions:
 - Node Package Manager (NPM): 9.8.1
 - Angular: 16.1.8
