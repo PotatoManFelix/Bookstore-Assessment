@@ -46,5 +46,3 @@ This is an Assessment Project that was assigned to me during an internship inter
 Please note that this project was developed using the following versions:
 - Node Package Manager (NPM): 9.8.1
 - Angular: 16.1.8
-
-Please ensure that the link `[env_example.txt](Backend/env_example.txt)` accurately reflects the relative path to the `env_example.txt` file within your repository's structure.
