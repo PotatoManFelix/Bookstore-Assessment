@@ -1,6 +1,9 @@
 # Bookstore-Assessment
 
 This is an Assessment Project that was assigned to me during an internship interview. Note that this project has a lot of areas for improvements both in code structure and website design, I took this project as an apportunity to get familiar with Angular's capabilities and sat out to do it using exclusively the Angular router to eliminate page refreshes. I am aware of the lack of both confirmation popup messages in the UX design and strict code functionality-based structure.
+## Acceptance Status
+This Project was accepted for the internship, here is the [Figma design](https://www.figma.com/file/hvwF02KqgY8sflW4rhlOGC/BookStore-(Email-Hidden)?type=design&node-id=16%3A273&mode=design&t=DJaQNB6hgtGqlHAb-1) containing the requirements
+
 ## Set Up
 
 ### Environmental Variables
